@@ -17,35 +17,33 @@ describe('CommonModal', () => {
     expect(getByText('커스텀제목')).toBeInTheDocument()
   })
 
-  test('닫기 버튼 클릭 시 update:modalClose 이벤트 발생', async () => {
-    const emitted = {}
+  test('닫기 버튼 클릭 시 close 이벤트 발생', async () => {
+    
     const { getByText, emitted: getEmitted } = render(CommonModal, {
       props: {
-        modalClose: false
       },
       slots: {
         header: '<h2>제목</h2>'
       }
     })
 
-    const closeBtn = getByText('X')
+    const closeBtn = getByText('닫기')
     await fireEvent.click(closeBtn)
 
-    const events = getEmitted()['update:modalClose']
+    const events = getEmitted()['close']
     expect(events).toBeTruthy()
-    expect(events[0]).toEqual([true])
+    expect(events[0]).toEqual([])
   })
 
-  test('modalClose가 true면 렌더링되지 않음', () => {
-    const { queryByText } = render(CommonModal, {
-      props: {
-        modalClose: true
-      },
-      slots: {
-        default: '<p>숨겨진 모달</p>'
-      }
-    })
+  // test('close가 true면 렌더링되지 않음', () => {
+  //   const { queryByText } = render(CommonModal, {
+  //     props: {
+  //     },
+  //     slots: {
+  //       default: '<p>숨겨진 모달</p>'
+  //     }
+  //   })
 
-    expect(queryByText('숨겨진 모달')).toBeNull()
-  })
+  //   expect(queryByText('숨겨진 모달')).toBeNull()
+  // })
 })

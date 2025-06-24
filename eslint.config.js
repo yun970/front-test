@@ -1,28 +1,21 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook";
+
 import js from '@eslint/js'
 import pluginVue from 'eslint-plugin-vue'
 import globals from 'globals'
 import skipFormatting from '@vue/eslint-config-prettier/skip-formatting'
 
-export default [
-  {
-    name: 'app/files-to-lint',
-    files: ['**/*.{js,mjs,jsx,vue}'],
-  },
-
-  {
-    name: 'app/files-to-ignore',
-    ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
-  },
-
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-      },
+export default [{
+  name: 'app/files-to-lint',
+  files: ['**/*.{js,mjs,jsx,vue}'],
+}, {
+  name: 'app/files-to-ignore',
+  ignores: ['**/dist/**', '**/dist-ssr/**', '**/coverage/**'],
+}, {
+  languageOptions: {
+    globals: {
+      ...globals.browser,
     },
   },
-
-  js.configs.recommended,
-  ...pluginVue.configs['flat/essential'],
-  skipFormatting,
-]
+}, js.configs.recommended, ...pluginVue.configs['flat/essential'], skipFormatting, ...storybook.configs["flat/recommended"]];
