@@ -5,17 +5,11 @@ export default {
   component: CommonModal,
   tags: ['autodocs'],
   argTypes: {
-    /*팝업창 제목*/
     title: { control: 'text', description: '팝업창 제목을 설정합니다.' },
-    /*팝업창 제목*/
     content: { control: 'text' },
-    /*팝업창 제목*/
     position: { control: 'object' },
-    /*팝업창 제목*/
     size: { control: 'object' },
-    /*팝업창 제목*/
     attachs: { control: 'object' },
-    /*팝업창 제목*/
     close: { action: 'close' },
   },
 }
@@ -29,7 +23,7 @@ const Template = (args) => ({
     <CommonModal v-bind="args" @close="args.close">
       <template #default>
         <div>
-          <p>{{ args.content }}</p>
+          <h1>{{ args.content }}</h1>
         </div>
       </template>
     </CommonModal>

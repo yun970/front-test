@@ -1,10 +1,9 @@
-import { rest } from 'msw'
+import { http, HttpResponse } from 'msw'
 
 export const handlers = [
-  rest.get('/api/user', (req, res, ctx) => {
-    return res(
-      ctx.status(200),
-      ctx.json({ name: 'Yun SeokJun' })
+  http.get('/api/user', () => {
+    return HttpResponse.json(      
+      { name: 'Yun SeokJun' }
     )
   })
 ]

@@ -3,15 +3,19 @@
 
     
     const props = defineProps({
-        // 출력 데이터
+        /*
+            출력 데이터
+        */
         data: {
             type:Array
         , required:false
+        , default: () => []
         }
          // 열(column) 명칭 
         , header: {
             type:Array
             , required:false
+            , default: () => []
         }
         // 테이블 캡션
         , caption: {
@@ -22,11 +26,13 @@
         , colGroup: {
             type:Array
             , required:false
+            , default: () => []
         }
         // 열(column) 정렬 순서 
         , order: {
             type:Array
             , required:false
+            , default: () => []
         }
     })
 
