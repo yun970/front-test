@@ -1,4 +1,25 @@
-import { describe, expect, test } from 'vitest'
+import { describe, expect, test, vi } from 'vitest'
+
+function sum(a,b) {
+  return a + b
+}
+
+
+
+describe('기본 단위 테스트', () => {
+  
+  test('두 수를 더한다', () => {
+    expect(sum(1, 2)).toBe(3)
+  })
+
+  test('함수 인자 테스트', () => {
+    const fn = vi.fn()
+    fn('hello')
+    expect(fn).toHaveBeenCalledWith('hello')
+  })
+
+
+})
 
 
 describe('기본 테스트', () => {

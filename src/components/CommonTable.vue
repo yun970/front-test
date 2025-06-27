@@ -37,7 +37,7 @@
     })
 
     const keys = computed(()=> {
-        if(props.order){
+        if(props.order && props.order.length > 0){
             return props.order
         }
 
@@ -57,10 +57,12 @@
             <col v-for="col in colGroup" :width="col + '%'">
         </colgroup>
         <thead class="bg-gray-50 dark:bg-gray-700">
-            <th v-for="th in props.header || keys"
-                class="border border-gray-300 p-4 text-center font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200 ">
-                {{ th }}
-            </th>
+            <tr>
+                <th v-for="th in props.header || keys"
+                    class="border border-gray-300 p-4 text-center font-semibold text-gray-900 dark:border-gray-600 dark:text-gray-200 ">
+                    {{ th }}
+                </th>
+            </tr>
         </thead>
         <tbody>
             <tr v-for="(item, rowIndex) in data" :key="rowIndex">
